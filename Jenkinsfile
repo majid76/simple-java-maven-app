@@ -3,7 +3,7 @@ pipeline{
         agent {
             docker {
                 image 'maven:3-alpine'
-                arge  '-v /root/.ms:/root/.m2'
+                arg  '-v /root/.ms:/root/.m2'
             }
         }
 
@@ -14,7 +14,7 @@ pipeline{
 
                 }
             }
-        }
+
             stage('Test'){
                 steps{
                     sh 'mvn test'
@@ -25,7 +25,7 @@ pipeline{
                     }
                 }
             }
-            stage('Deliver'){
+            stage('Deliver') {
                 steps{
                     sh './jenkins/scripts/deliver.sh'
                 }
